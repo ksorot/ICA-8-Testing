@@ -1,6 +1,8 @@
 package org.example;
 
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,10 +19,12 @@ public class Urinals {
             Urinals.inputkeyboard();
         }
         else{
-            List<String> filein = Urinals.fileread();
+            List<String> fileurinals = Urinals.fileread();
+            List<Integer> temp = new ArrayList<>();
+            temp = Urinals.fileUrinalcount(fileurinals);
+            Urinals.fileoutput(temp);
 
         }
-
     }
 
     public static void inputkeyboard(){
@@ -55,6 +59,37 @@ public class Urinals {
             System.out.println(e);
         }
         return temp;
+    }
+
+    public static List<Integer> fileUrinalcount(List<String> fileurinals){
+        int n = fileurinals.size();
+        List<Integer> answer = new ArrayList<>();
+        for(int i =0 ; i<n ; i++){
+            int val = Urinals.stringcheck(fileurinals.get(i));
+            if(val == -2){
+                break;
+            }
+            else if (val == -1){
+                answer.add(-1);
+            }
+            else{
+                int ans = UrinalCount(fileurinals.get(i));
+                answer.add(ans);
+            }
+        }
+        return answer;
+    }
+
+    public static void  fileoutput(List<Integer> ans){
+        try{
+            FileWriter buildfile = new FileWriter("rule.txt");
+         for(int i = 0; i < ans.size(); i++){
+             buildfile.write(String.valueOf(ans.get(i)) + "\n");
+         }
+         buildfile.close();
+        }catch(IOException e){
+            System.out.println(e);
+        }
     }
 
     public static int stringcheck(String s){
