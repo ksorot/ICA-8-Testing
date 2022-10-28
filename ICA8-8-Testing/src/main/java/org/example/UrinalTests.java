@@ -1,6 +1,11 @@
 package org.example;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.util.Objects.deepEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UrinalTests {
@@ -33,6 +38,25 @@ public class UrinalTests {
         assertEquals(0, new Urinals().stringcheck("101"));
         System.out.println("====== Karan Sorot == TEST FOUR EXECUTED =======");
     }
+
+    @Test
+    public void test5() {
+        List<String> arr = new ArrayList<>();
+        arr.add("10001");
+        arr.add("10000");
+        assertEquals( 1, new Urinals().fileUrinalcount(arr).get(0));
+        System.out.println("====== Karan Sorot == TEST FIVE EXECUTED =======");
+    }
+
+    @Test
+    public void test6() {
+        List<String> arr = new ArrayList<>();
+        arr.add("10001");
+        arr.add("10000");
+        assertEquals( 2, new Urinals().fileUrinalcount(arr).get(1));
+        System.out.println("====== Karan Sorot == TEST SIX EXECUTED =======");
+    }
+
 
 
 
