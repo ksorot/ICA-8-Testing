@@ -82,6 +82,13 @@ public class UrinalTests {
         System.out.println("====== Karan Sorot == TEST EIGHT EXECUTED =======");
     }
 
+    //Bad File name
+    @Test
+    public void test9(){
+        File f = new File("rulesabc.txt");
+        assertEquals(false, f.exists());
+        System.out.println("====== Karan Sorot == TEST NINE EXECUTED =======");
+    }
 
 
 }
