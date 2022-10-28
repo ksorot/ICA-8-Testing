@@ -14,43 +14,72 @@ public class Urinals {
         Scanner myObj = new Scanner(System.in);
         String input = myObj.nextLine();
         if(input.equals("1")){
-            System.out.println("Please enter the string for urinals");
-            String s = myObj.nextLine();
-            int invalid = stringcheck(s);
-            if(invalid == -1){
-                System.out.println(" -1  Invalid String Input");
-            }
-            else {
-                int ans = UrinalCount(s);
-                System.out.println(ans);
-            }
-        }
-        else if(input.equals("0")){
-
+            Urinals.inputkeyboard();
         }
         else{
-            System.out.println("invalid input choice please run the program again and select from 0 and 1 only ");
+            List<String> filein = Urinals.fileread();
+
         }
+
+    }
+
+    public static void inputkeyboard(){
+            while(true) {
+                System.out.println("Please enter the string for urinals ( Enter -1 to exit)");
+                Scanner myObj = new Scanner(System.in);
+                String s = myObj.nextLine();
+                int invalid = stringcheck(s);
+                if (invalid == -2) {
+                    break;
+                }
+                    else if (invalid == -1) {
+                        System.out.println("-1");
+                    }
+                    else {
+                        int ans = UrinalCount(s);
+                        System.out.println(ans);
+                }
+            }
+    }
+
+    public static List<String> fileread(){
+        List<String> temp = new ArrayList<>();
+        try {
+            FileReader Reader = new FileReader("urinal.dat");
+            Scanner readerin = new Scanner (Reader);
+            while(readerin.hasNextLine()){
+                temp.add(readerin.nextLine());
+            }
+            return temp;
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return temp;
     }
 
     public static int stringcheck(String s){
+        if(s.equals("-1")) {
+            return -2;
+        }
         char[] temp = s.toCharArray();
         int counter = 0;
-        for(int i = 0; i < temp.length-1; i++){
+        for(int i = 0; i < temp.length-1; i++) {
 
-            if(temp[i] == '1' && temp[i+1] == '1'){
+            if (temp[i] == '1' && temp[i + 1] == '1') {
                 counter++;
             }
-            if(temp[i] != '0' && temp[i]!= '1'){
+            if(temp[i] != '1' && temp[i]!='0'){
                 return -1;
             }
         }
+
         if(counter == temp.length-1){
             return -1;
         }
         else
         return 0;
     }
+
     public static int UrinalCount(String s){
         char[] temp = s.toCharArray();
         int count = 0;
@@ -83,4 +112,6 @@ public class Urinals {
         }
         return count;
     }
+
+
 }
