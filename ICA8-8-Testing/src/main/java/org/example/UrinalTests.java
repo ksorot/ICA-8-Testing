@@ -1,6 +1,7 @@
 package org.example;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,8 @@ public class UrinalTests {
         System.out.println("====== Karan Sorot == TEST FOUR EXECUTED =======");
     }
 
+
+    // file read valid input
     @Test
     public void test5() {
         List<String> arr = new ArrayList<>();
@@ -48,6 +51,7 @@ public class UrinalTests {
         System.out.println("====== Karan Sorot == TEST FIVE EXECUTED =======");
     }
 
+    //file read valid input
     @Test
     public void test6() {
         List<String> arr = new ArrayList<>();
@@ -55,6 +59,14 @@ public class UrinalTests {
         arr.add("10000");
         assertEquals( 2, new Urinals().fileUrinalcount(arr).get(1));
         System.out.println("====== Karan Sorot == TEST SIX EXECUTED =======");
+    }
+
+    // file exists or not
+    @Test
+    public void test7(){
+        File f = new File("urinal.dat");
+        assertEquals(true, f.exists());
+        System.out.println("====== Karan Sorot == TEST SEVEN EXECUTED =======");
     }
 
 

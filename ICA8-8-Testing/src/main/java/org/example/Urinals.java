@@ -1,5 +1,6 @@
 package org.example;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -81,8 +82,19 @@ public class Urinals {
     }
 
     public static void  fileoutput(List<Integer> ans){
+        int a =0;
+        try {
+            FileReader Reader = new FileReader("check.txt");
+            Scanner readerin = new Scanner (Reader);
+            a = readerin.nextInt();
+            }
+            catch(Exception e){
+            System.out.println(e);
+        }
+
         try{
-            FileWriter buildfile = new FileWriter("rule.txt");
+
+            FileWriter buildfile = new FileWriter("rule" + a + ".txt");
          for(int i = 0; i < ans.size(); i++){
              buildfile.write(String.valueOf(ans.get(i)) + "\n");
          }
@@ -90,6 +102,14 @@ public class Urinals {
         }catch(IOException e){
             System.out.println(e);
         }
+        try{
+            FileWriter buildfile = new FileWriter("check.txt");
+                buildfile.write(String.valueOf(++a));
+            buildfile.close();
+        }catch(IOException e){
+            System.out.println(e);
+        }
+
     }
 
     public static int stringcheck(String s){
@@ -103,6 +123,11 @@ public class Urinals {
             if (temp[i] == '1' && temp[i + 1] == '1') {
                 counter++;
             }
+            if(temp[i] != '1' && temp[i]!='0'){
+                return -1;
+            }
+        }
+        for(int i = 0; i < temp.length; i++) {
             if(temp[i] != '1' && temp[i]!='0'){
                 return -1;
             }
