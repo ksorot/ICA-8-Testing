@@ -28,7 +28,7 @@ public class Urinals {
         }
     }
 
-    public static int inputkeyboard(){
+    public static void inputkeyboard(){
             while(true) {
                 System.out.println("Please enter the string for urinals ( Enter -1 to exit)");
                 Scanner myObj = new Scanner(System.in);
@@ -45,7 +45,6 @@ public class Urinals {
                         System.out.println(ans);
                 }
             }
-            return 0;
     }
 
     public static List<String> fileread(){

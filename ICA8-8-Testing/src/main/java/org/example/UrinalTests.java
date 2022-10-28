@@ -1,13 +1,13 @@
 package org.example;
 import org.junit.jupiter.api.Test;
-
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Objects.deepEquals;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UrinalTests {
 
@@ -69,14 +69,18 @@ public class UrinalTests {
         System.out.println("====== Karan Sorot == TEST SEVEN EXECUTED =======");
     }
 
-    // keyboardinput function works
+
+    // If file is empty
     @Test
     public void test8(){
-        assertEquals(0, new Urinals().inputkeyboard());
+        try {
+            BufferedReader read = new BufferedReader(new FileReader("urinal.dat"));
+            assertNotNull(read.readLine());
+        } catch (Exception error){
+            System.out.println(error);
+        }
         System.out.println("====== Karan Sorot == TEST EIGHT EXECUTED =======");
     }
-
-    
 
 
 
