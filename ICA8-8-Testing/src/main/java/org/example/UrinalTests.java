@@ -7,6 +7,18 @@ public class UrinalTests {
     @Test
     public void test1(){
         assertEquals( 0, new Urinals().UrinalCount("10101") );
+        System.out.println("====== Karan Sorot == TEST ONE EXECUTED =======");
+    }
+
+    @Test
+    public void test2(){
+        assertEquals( -1, new Urinals().stringcheck("11111") );
         System.out.println("====== Karan Sorot == TEST TWO EXECUTED =======");
     }
+
+    
+
+
+
+
 }
