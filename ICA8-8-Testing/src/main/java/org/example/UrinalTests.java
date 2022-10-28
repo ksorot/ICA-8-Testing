@@ -69,6 +69,14 @@ public class UrinalTests {
         System.out.println("====== Karan Sorot == TEST SEVEN EXECUTED =======");
     }
 
+    // keyboardinput function works
+    @Test
+    public void test8(){
+        assertEquals(0, new Urinals().inputkeyboard());
+        System.out.println("====== Karan Sorot == TEST EIGHT EXECUTED =======");
+    }
+
+    
 
 
 
